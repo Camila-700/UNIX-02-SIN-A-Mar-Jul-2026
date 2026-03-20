@@ -1,2 +1,3 @@
 uname -a #Da info del ordenador 
-which gpg #Da info de donde esta el binario del gpg 
+which gpg #ubicación del binario del gpg 
+gpg --version #muestra la versión e info de gpg 
