@@ -8,3 +8,11 @@ cd /proyecto
 #Moves you to a folder named "proyecto" located at the root level of the system.
 cd /workspaces/UNIX-02-SIN-A-Mar-Jul-2026/proyecto
 #Navigates directly to that specific folder path.
+cd
+#Takes you back to your Home directory immediately.
+cd ~
+#Also takes you to your Home directory.
+cd $HOME
+#Moves you to your Home directory.
+cd $PATH
+#This command will usually fail or give an error.
