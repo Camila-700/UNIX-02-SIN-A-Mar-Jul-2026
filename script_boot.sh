@@ -41,3 +41,12 @@ total 8
 #Apr 9 12:19: The Timestamp of the last time the folder was modified.
 #.: The symbol for the Current Directory.
 #..: The symbol for the Parent Directory (one level up).
+stat . 
+#Displays detailed status and information about the current directory.
+Device: 7,4     Inode: 1572972     Links: 2
+#"DNA": Device (7,4) is the hardware address where it is stored, Inode (1572972) is its unique system ID number, 
+#and Links (2) shows how many references point to it (usually the folder name and the . symbol).
+whoami
+#Displays the username of the current user.
+ls -lt 
+#Lists files sorted by time.
