@@ -28,3 +28,16 @@ cd..
 #Represents the current directory.
 ..
 #Represents the parent directory.
+total 8
+1572972 drwxrwxrwx+ 2 codespace codespace 4096 Apr  9 12:19 .
+1572874 drwxrwxrwx+ 5 codespace root      4096 Apr  9 12:19 ..
+#total 8: The total disk space (in blocks) used by the listed files.
+#1572972 / 1572874: The Inode number, which is the unique ID for that specific folder.
+#drwxrwxrwx+: The Permissions. The d means directory, and rwx means Read, Write, and Execute.
+#2 / 5: The number of Hard Links pointing to this directory.
+#codespace: The name of the User who owns the folder.
+#codespace / root: The name of the Group that owns the folder.
+#4096: The Size of the directory metadata in bytes.
+#Apr 9 12:19: The Timestamp of the last time the folder was modified.
+#.: The symbol for the Current Directory.
+#..: The symbol for the Parent Directory (one level up).
