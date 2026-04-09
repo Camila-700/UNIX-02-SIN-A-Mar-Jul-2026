@@ -50,3 +50,8 @@ whoami
 #Displays the username of the current user.
 ls -lt 
 #Lists files sorted by time.
+ls /etc |head -20 
+#Lists the first 20 files and folders inside the /etc directory.
+ls /etc |tail -20
+#Lists the last 20 files and folders inside the /etc directory.
+
