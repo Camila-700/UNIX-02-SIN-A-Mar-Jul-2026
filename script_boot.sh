@@ -54,4 +54,13 @@ ls /etc |head -20
 #Lists the first 20 files and folders inside the /etc directory.
 ls /etc |tail -20
 #Lists the last 20 files and folders inside the /etc directory.
-
+sudo apt update 
+#efreshes the local list of available software packages.
+sudo apt install -y git vim make gcc libncurses-dev flex bison bc cpio libelf-dev libssl-dev syslinux dosfstools qemu-system-x86
+#Installs a specific set of development tools and libraries.
+git clone --depth 1 https://github.com/torvalds/linux.git
+#Downloads the Linux kernel source code from GitHub. 
+cd linux
+#Enters the folder containing the Linux kernel source code.Enters the folder containing the Linux kernel source code.
+make menuconfig
+#Opens a graphical menu in the terminal to configure kernel options.
