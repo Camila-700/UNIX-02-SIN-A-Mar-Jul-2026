@@ -16,3 +16,15 @@ cd $HOME
 #Moves you to your Home directory.
 cd $PATH
 #This command will usually fail or give an error.
+ls -lai
+#Lists all files in a long list format with index numbers.
+man ls 
+#Opens the manual page for the ls command.
+ls --all = ls -a
+#These are identical commands.
+cd..
+#Moves you up one level to the parent folder.
+.
+#Represents the current directory.
+..
+#Represents the parent directory.
