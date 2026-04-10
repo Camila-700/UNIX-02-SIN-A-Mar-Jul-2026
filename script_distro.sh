@@ -16,7 +16,18 @@ sudo cp arch/x86/boot/bzImage /boot-files/
 #Copies the compiled kernel image to the /boot-files directory.
 cd ..
 #Moves up one level to the parent directory.
-
+git clone --depth 1 https://git.busybox.net/busybox
+#Downloads a shallow copy of the BusyBox source code repository.
+cd busybox
+#Changes the current directory to the BusyBox source folder.
+make menuconfig
+#Opens a configuration menu to customize BusyBox features.
+make -j 2
+#Compiles BusyBox using 2 parallel jobs to speed up the process.
+sudo mkdir /boot-files/initramfs
+#Creates a directory for the initramfs filesystem with administrator privileges.
+sudo make CONFIG_PREFIX=/boot-files/initramfs install
+#Installs BusyBox files into the initramfs directory specified by CONFIG_PREFIX.
 
 
 
