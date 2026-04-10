@@ -28,6 +28,19 @@ sudo mkdir /boot-files/initramfs
 #Creates a directory for the initramfs filesystem with administrator privileges.
 sudo make CONFIG_PREFIX=/boot-files/initramfs install
 #Installs BusyBox files into the initramfs directory specified by CONFIG_PREFIX.
-
-
+cd /boot-files/initramfs
+#Changes the current directory to the initramfs folder.
+sudo vi init
+#Opens the init file for editing with root privileges.
+!/bin/sh
+/bin/sh
+#Defines a simple init script that launches a shell.
+sudo rm linuxrc
+#Removes the default linuxrc file.
+sudo chmod +x init
+#Makes the init script executable.
+sudo find . | cpio -o -H newc > ../init.cpio
+#Creates an initramfs archive from the current directory.
+cd ..
+#Moves up one level to the parent directory.
 
