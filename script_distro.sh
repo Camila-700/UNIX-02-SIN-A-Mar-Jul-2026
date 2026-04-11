@@ -43,4 +43,21 @@ sudo find . | cpio -o -H newc > ../init.cpio
 #Creates an initramfs archive from the current directory.
 cd ..
 #Moves up one level to the parent directory.
-
+sudo su
+#Switch to the root user with full administrative privileges.
+dd if=/dev/zero of=boot bs=1M count=50
+#Create a 50MB blank disk image file filled with zeros.
+mkfs -t fat boot
+#Format the file as a FAT filesystem.
+syslinux boot
+#Install a SYSLINUX bootloader on the disk image.
+mkdir m
+#Create a directory named "m".
+mount boot m
+#Mount the disk image file to the directory "m".
+cp bzImage init.cpio m
+#Copy the kernel and initramfs into the mounted filesystem.
+umount m
+#Unmount the mounted filesystem.
+qemu-system-x86_64 -nographic -append "console=ttyS0" -kernel bzImage -initrd init.cpio -drive file=boot,format=raw
+#oot a virtual machine using QEMU with the specified kernel, initramfs, and disk image.
