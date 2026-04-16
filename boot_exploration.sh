@@ -38,3 +38,5 @@ sudo echo "hola" > /etc/archivo_protegido
 #attempt to write ‘hola’ to a protected file.
 echo "hola" | sudo tee /etc/archivo_protegido > /dev/null
 #write ‘hola’ to a protected file using sudo (suppressing output).
+echo "hola" | sudo tee /etc/archivo_protegido
+#write ‘hola’ to a file with elevated privileges using sudo and tee.
