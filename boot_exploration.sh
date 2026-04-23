@@ -42,4 +42,9 @@ echo "hola" | sudo tee /etc/archivo_protegido
 #write ‘hola’ to a file with elevated privileges using sudo and tee.
 sudo sh -c 'echo "chao" >> /etc/archivo_protegido'
 #Runs a shell command as root to append the text "chao" to a protected file in /etc.
-
+sudo -i
+#Starts an interactive login shell with root privileges.
+sudo su 
+#Switches to the root user by starting a new shell with superuser privileges.
+sudo su -
+#Switches to the root user and loads their full login environment.
