@@ -76,3 +76,13 @@ mkdir ~/mi_carpeta
 #Creates a directory named mi_carpeta in the user's home directory.
 apt install cowsay
 #Installs the cowsay package using the package manager (requires sudo).
+touch prueba.txt
+#Creates an empty file named prueba.txt.
+chmod 600 prueba.txt
+#Sets permissions to read and write for the owner only.
+ls -l prueba.txt
+#Displays the file permissions and details.
+chmod 755 prueba.txt
+#Sets permissions to read, write, execute for owner and read/execute for others.
+ls -l prueba.txt 
+#Shows the updated permissions of the file.
