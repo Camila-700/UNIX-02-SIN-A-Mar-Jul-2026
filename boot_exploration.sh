@@ -66,3 +66,13 @@ chmod +x hola.sh
 #Adds execute permission to the script.
 ls -l hola.sh
 #Verifies that execute permission was added.
+./hola.sh
+#Executes the script successfully.
+ls /etc
+#Lists the contents of the /etc directory.
+sudo touch /etc/prueba.txt
+#Attempts to create an empty file in /etc (requires root privileges).
+mkdir ~/mi_carpeta
+#Creates a directory named mi_carpeta in the user's home directory.
+apt install cowsay
+#Installs the cowsay package using the package manager (requires sudo).
