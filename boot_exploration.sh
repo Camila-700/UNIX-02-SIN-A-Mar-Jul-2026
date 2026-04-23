@@ -48,3 +48,7 @@ sudo su
 #Switches to the root user by starting a new shell with superuser privileges.
 sudo su -
 #Switches to the root user and loads their full login environment.
+echo "$HOME"
+#Expands the variable and prints the value of HOME.
+echo '$HOME'
+#Prints the literal string $HOME without expanding it.
