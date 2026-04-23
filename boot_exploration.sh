@@ -52,3 +52,17 @@ echo "$HOME"
 #Expands the variable and prints the value of HOME.
 echo '$HOME'
 #Prints the literal string $HOME without expanding it.
+echo '#!/bin/sh' > hola.sh
+#Creates the script file and writes the shebang line.
+echo 'echo "Hola desde mi primer script"' >> hola.sh
+#Appends a line to print a message in the script.
+cat hola.sh
+#Displays the contents of the script.
+./hola.sh
+#Attempts to execute the script (may fail if not executable yet).
+ls -l hola.sh
+#Shows file permissions and details.
+chmod +x hola.sh
+#Adds execute permission to the script.
+ls -l hola.sh
+#Verifies that execute permission was added.
