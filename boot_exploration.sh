@@ -40,3 +40,6 @@ echo "hola" | sudo tee /etc/archivo_protegido > /dev/null
 #write ‘hola’ to a protected file using sudo (suppressing output).
 echo "hola" | sudo tee /etc/archivo_protegido
 #write ‘hola’ to a file with elevated privileges using sudo and tee.
+sudo sh -c 'echo "chao" >> /etc/archivo_protegido'
+#Runs a shell command as root to append the text "chao" to a protected file in /etc.
+
