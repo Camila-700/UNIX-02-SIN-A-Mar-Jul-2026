@@ -35,4 +35,11 @@
    34  git add .
    35  git commit -m "Fix problema 4: permisos simbolicos corregidos"
    36  history
+   37  ls -l
+   38  chmod u+s runner.sh
+   39  ls -l
+   40  git add.
+   41  git add .
+   42  git commit -m "Fix problema 5: SUID activado en runner.sh"
+   43  history
    
