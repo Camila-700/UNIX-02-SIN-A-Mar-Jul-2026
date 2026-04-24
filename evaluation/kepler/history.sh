@@ -20,3 +20,10 @@
    20  git add .
    21  git commit -m "Fix problema 2: archivos movidos y renombrados"
    22  history
+   history
+   23  cd registros
+   24  chmod 640 sensores.log
+   25  ls -l
+   26  git add .
+   27  git commit -m "Fix problema 3: permisos numericos 600 en sensores.log"
+   28  history
