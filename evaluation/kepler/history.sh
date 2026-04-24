@@ -15,4 +15,8 @@
    15  git add .
    16  git commit -m "Fix problema 1: estructura de directorios corregida"
    17  history
-   
+   mv sensores.log registros/
+   19  mv ajustes.old ajustes.conf
+   20  git add .
+   21  git commit -m "Fix problema 2: archivos movidos y renombrados"
+   22  history
