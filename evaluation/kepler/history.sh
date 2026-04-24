@@ -56,4 +56,13 @@
    55  git commit -m "Fix problema 6: sticky bit en /tmp/kepler_zone"
    56  git push
    57  history
-   
+   history
+   58  gpg --full-generate-key
+   59  cd registros
+   60  cd kepler
+   61  cd registros
+   62  gpg --output kepler/registros/sensores.log.gpg     --encrypt     --recipient vega@kepler.lab     kepler/registros/sensores.log
+   63  git add .
+   64  git commit -m "Fix problema 7: llave GPG generada y sensores.log cifrado"
+   65  git push
+   66  history
