@@ -58,11 +58,10 @@
    57  history
    history
    58  gpg --full-generate-key
-   59  cd registros
-   60  cd kepler
-   61  cd registros
-   62  gpg --output kepler/registros/sensores.log.gpg     --encrypt     --recipient vega@kepler.lab     kepler/registros/sensores.log
-   63  git add .
-   64  git commit -m "Fix problema 7: llave GPG generada y sensores.log cifrado"
-   65  git push
-   66  history
+   59  gpg --encrypt --recipient vega@kepler.lab --output kepler/registros/sensores.log.gpg kepler/registros/sensores.log
+   60  ls -l kepler/registros/sensores.log.gpg
+   61  gpg --decrypt kepler/registros/sensores.log.gpg
+   62  git add .
+   63  git commit -m "Fix problema 7: llave GPG generada y sensores.log cifrado"
+   64  git push
+   
