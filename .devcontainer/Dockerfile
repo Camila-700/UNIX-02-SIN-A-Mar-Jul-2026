@@ -234,7 +234,12 @@ __set_prompt() {
 PROMPT_COMMAND=__set_prompt
 EOF
 CMD ["/bin/bash"]
+# Prompt de zsh con ✓ si el comando anterior salió bien y ✗ si falló
+RUN cat > /root/.zshrc <<'EOF'
+autoload -Uz colors && colors
 
+PROMPT='%F{cyan}%n@%m%f:%F{blue}%~%f %(?.%F{green}✓%f.%F{red}✗ %?%f) %# '
+EOF
 
 
 
