@@ -40,3 +40,19 @@ useradd -m -s /usr/bin/zsh luna
 #Creates a new user named luna with a home directory and sets zsh as the login shell.
 chown luna mi_archivo
 #Changes the owner of mi_archivo to the user luna.
+groups
+# Displays the groups that the current user belongs to.
+groupadd grupo_test
+# Creates a new group named grupo_test.
+groups
+# Displays the current user's groups again; grupo_test does not appear because no user has been assigned to it yet.
+touch comun
+# Creates an empty file named comun or updates its timestamp if it already exists.
+ls -l comun
+# Shows detailed information about comun, including permissions, owner, group, size, and date.
+usermod -a -G grupo_test luna
+# Adds the user luna to the supplementary group grupo_test without removing her from other groups.
+chgrp grupo_test comun
+# Changes the group ownership of the file comun to grupo_test.
+ls -l comun
+# Shows detailed information about comun, including its updated group ownership.
