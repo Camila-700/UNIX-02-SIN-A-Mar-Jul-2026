@@ -60,3 +60,11 @@ sudo chown luna:grupo_test mi_archivo
 # Changes the owner of mi_archivo to luna and its group ownership to grupo_test.
 ls -l mi_archivo
 # Shows detailed information about mi_archivo, including its updated owner and group.
+mkdir -p proyecto/sub
+# Creates the proyecto directory and its sub directory, including parent directories if needed.
+touch proyecto/readme proyecto/sub/datos
+# Creates empty files named readme and datos inside the proyecto directory structure.
+sudo chown -R luna:grupo_test proyecto
+# Recursively changes the owner to luna and the group to grupo_test for proyecto and everything inside it.
+ls -lR proyecto
+# Lists the proyecto directory recursively in long format, showing updated permissions, owner, group, size, and date.
