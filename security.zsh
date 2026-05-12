@@ -30,3 +30,13 @@ ls -l
 # Lists files and directories in long format, showing permissions, owner, size, and date.
 umask 022
 # Sets the default permission mask so new files are usually created with 644 permissions and new directories with 755 permissions.
+whoami 
+#Displays the username of the current user.
+echo "Hola" > mi_archivo 
+#Writes the text "Hola" into a file named mi_archivo, creating or overwriting it.
+ls -l mi_archivo
+#Shows detailed information about mi_archivo, including permissions, owner, size, and date.
+useradd -m -s /usr/bin/zsh luna
+#Creates a new user named luna with a home directory and sets zsh as the login shell.
+chown luna mi_archivo
+#Changes the owner of mi_archivo to the user luna.
