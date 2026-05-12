@@ -56,3 +56,7 @@ chgrp grupo_test comun
 # Changes the group ownership of the file comun to grupo_test.
 ls -l comun
 # Shows detailed information about comun, including its updated group ownership.
+sudo chown luna:grupo_test mi_archivo
+# Changes the owner of mi_archivo to luna and its group ownership to grupo_test.
+ls -l mi_archivo
+# Shows detailed information about mi_archivo, including its updated owner and group.
