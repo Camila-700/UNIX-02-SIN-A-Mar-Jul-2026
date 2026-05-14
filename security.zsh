@@ -68,3 +68,53 @@ sudo chown -R luna:grupo_test proyecto
 # Recursively changes the owner to luna and the group to grupo_test for proyecto and everything inside it.
 ls -lR proyecto
 # Lists the proyecto directory recursively in long format, showing updated permissions, owner, group, size, and date.
+
+#View the current user's numeric ID
+#Numeric user ID, primary group, secondary groups
+id
+#View all system users
+cat /etc/passwd | head -10 
+#Displays the groups associated with the user stored in the variable $Luna  
+groups $Luna
+#View the current user's UID and GID
+id -u
+#User ID
+id -g
+#Group principal Id 
+id -G
+#All Group IDs
+cat /etc/group | grep codespace
+#Creates a new directory named proyecto_unix inside the user's home directory
+mkdir ~/proyecto_unix/
+#Displays detailed information about the contents of the directory proyecto_unix, including hi 
+ls -la ~/proyecto_unix/
+#Creates a new group named desarrolladores in the system
+groupadd desarrolladores 
+#Creates a new group named operaciones with the group ID (GID) 2000
+groupadd -g 2000 operaciones
+#Creates a system group named servicios_web, usually used for system services or applications
+groupadd --system servicios_web
+#Searches the /etc/group file for the groups desarrolladores, operaciones, or servicios_web
+grep "desarrolladores\|operaciones\|servicios_web"/etc/group
+#Uses extended regular expressions to search the /etc/group file for the groups desarroladores 
+grep -E "desarrolladores|operaciones|servicios_web" /etc/group
+#Searches the /etc/login.defs file for the configuration values GID_MIN, GID_MAX, and SYS_GID,
+grep "GID_MIN\|GID_MAX\|SYS_GID" /etc/login.defs
+#Creates a new user group named marketing with the group ID (GID) 2100
+addgroup --gid 2100 marketing
+#Creates a system group named cache_web, usually used for system services or background process
+addgroup --system cache_web
+#Searches the /etc/group file for the groups diseno, marketing, or cache_web and displays them
+grep "diseno\|marketing\|cache_web" /etc/group
+#Adds the user root to the group diseno without removing the user from other existing groups
+usermod -aG diseno root 
+#Creates a new group name 'grupo_temporal' in the system
+groupadd grupo_temporal
+#Adds the user 'root' to the group 'grupo_temporal' without removing the user from the group
+usermod -aG grupo_temporal root
+#Displays detailed information about the user 'root', including the user ID (UID), primary group
+id root 
+#Changes the supplementary groups of the user root and assigns only the group desarrolladores
+usermod -G desarrolladores root
+#Displays detailed information about the user root, including the user ID (UID), primary group
+id root 
