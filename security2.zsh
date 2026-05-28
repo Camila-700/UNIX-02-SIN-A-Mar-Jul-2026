@@ -78,7 +78,15 @@ echo "Grupo restaurado: $(id -gn)"
 ls -la ~/antes_de_newgrp.txt ~/dentro_de_newgrp.txt
 #-rw-r--r-- 1 root root            0 may 28 12:51 /root/antes_de_newgrp.txt
 #-rw-r--r-- 1 root desarrolladores 0 may 28 13:21 /root/dentro_de_newgrp.txt
-#
+#Crear un grupo con contraseña
 groupadd grupo_restringido
-#
+#El sistema pedirá una contraseña para el grupo
 gpasswd grupo_restringido
+# Create the user Luna with a home directory
+useradd -m Luna
+
+# Switch to the Luna user
+su Luna
+
+# Try to switch to the 'grupo_restringido' group
+newgrp grupo_restringido
