@@ -18,9 +18,6 @@ df --human-readable
 
 bash -r blackhatbash1.sh
 # Runs Bash in restricted mode with the script
-cd ~
-chmod u+x helloworld.sh
-./helloworld.sh
 bash -n blackhatbash.sh
 # Checks the script for syntax errors without running it
 bash -x blackhatbash.sh 
