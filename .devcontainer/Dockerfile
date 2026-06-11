@@ -67,4 +67,102 @@ ENV DEBIAN_FRONTEND=noninteractive \
 # of the 'debconf-set-selections' command, pre-answering "false" so the installer proceeds smoothly.
 RUN echo "wireshark-common wireshark-common/install-setuid boolean false" \
     | debconf-set-selections
+# ----------------------------------------------------------------------------
+# Blocks e, f, g: The monolithic RUN instruction (Advanced text tools, utility tools, cleanups)
+# ----------------------------------------------------------------------------
+# Block e (The Big RUN): We combine package synchronization, package installation, 
+# configuration, and cleanup tasks into one monolithic RUN block using the logical 
+# AND control operator ("&&"). In shell scripting (BHB Ch. 2), "&&" ensures that 
+# subsequent commands execute only if the preceding command exits with a success code (0).
+#
+# Why one single RUN block instead of multiple individual RUNs? 
+# Because every separate RUN instruction commits a new immutable filesystem layer. 
+# If we installed utilities and cleaned up in separate steps, deleted files would 
+# still remain trapped in intermediate layers, bloating the final image size. 
+# Consolidating everything inside one RUN keeps the layer footprint lean.
+#
+# Key Package Flags Explained:
+#   apt-get update              -> Pulls the latest package indexes from remote metadata repositories.
+#   apt-get install             -> Downloads and configures the requested binaries.
+#   -y                          -> Automatically answers "yes" to all installation confirmation prompts.
+#   --no-install-recommends    -> Discards non-essential or optional dependencies, saving hundreds of megabytes.
+#
+# Selected Core Tools Explained:
+#   - gawk, sed, grep: Powerful string manipulation utilities for text processing, regex searching, 
+#     and inline file transformations (BHB Ch. 2).
+#   - shellcheck: A static analysis linter tool that flags bugs, syntax violations, and structural 
+#     errors in Bash shell scripts (BHB Ch. 1).
+#   - nmap: A premier network exploration, port scanning, and security auditing utility (BHB Ch. 3).
+#   - tcpdump / tshark: Command-line packet sniffers used to capture, inspect, and analyze live 
+#     network traffic protocols.
+#   - tor / proxychains4: Privacy utilities; tor routes data over an anonymized network, while proxychains4 
+#     forces third-party applications to route through custom proxy chains.
+#   - jq: A specialized command-line utility used to parse, filter, and extract structured JSON data stream data.
+#   - man-db: Re-enables local Unix manuals (`man` pages), which are stripped by default in lean Kali base images.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    \
+    # === Text Editors & Shell Interpreters ===
+    neovim \
+    vim \
+    zsh \
+    bash-completion \
+    \
+    # === 4th Generation Text Manipulation Engines (BHB Ch. 2) ===
+    perl \
+    make \
+    gawk \
+    sed \
+    grep \
+    \
+    # === Core UNIX Base Utilities ===
+    coreutils \
+    findutils \
+    procps \
+    less \
+    tree \
+    jq \
+    \
+    # === Manual Pages and System Documentation ===
+    man-db \
+    manpages \
+    manpages-posix \
+    \
+    # === Networking Protocols & Asset Downloads ===
+    curl \
+    wget \
+    git \
+    git-lfs \
+    ca-certificates \
+    locales \
+    \
+    # === Shell Script Linters ===
+    shellcheck \
+    \
+    # === Network Reconnaissance & Mapping (BHB Ch. 3) ===
+    nmap \
+    masscan \
+    \
+    # === Traffic Capture & Deep Packet Analysis ===
+    tcpdump \
+    tshark \
+    \
+    # === Core Network Diagnostics & Tunnels ===
+    netcat-traditional \
+    socat \
+    dnsutils \
+    whois \
+    traceroute \
+    mtr-tiny \
+    iproute2 \
+    net-tools \
+    iputils-ping \
+    \
+    # === Anonymization, Proxies, and Tor Networking ===
+    tor \
+    torsocks \
+    proxychains4 \
+    obfs4proxy \
+    \
+    # === Modern Readable HTTP Client Utilities ===
+    httpie \
     
