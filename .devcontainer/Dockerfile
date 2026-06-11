@@ -240,3 +240,15 @@ RUN cat >> /root/.zshrc <<'EOF'
 
 PROMPT='%F{cyan}[Camila-Lascano]%f %F{yellow}%1~%f %(?.%F{green}√.%F{red}X %?)%f %# '
 EOF
+# ----------------------------------------------------------------------------
+# Block m: CMD ["/usr/bin/zsh"]
+# ----------------------------------------------------------------------------
+# Distinguishing CMD from RUN (BHB Ch. 3): 
+#   - RUN commands execute strictly during the initial *building phase* to modify and bake the image layer.
+#   - CMD sets the *default executable entry point tool* that runs when a container launches.
+# 
+# Here, it launches an interactive Z-shell session (`/usr/bin/zsh`) upon startup. 
+# Although integrated systems like GitHub Codespaces often intercept and replace this parameter 
+# with their own terminal bindings, keeping it defined ensures usability when spinning up 
+# standard standalone Docker instances.
+CMD ["/usr/bin/zsh"]
