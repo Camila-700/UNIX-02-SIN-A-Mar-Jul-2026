@@ -216,3 +216,27 @@ RUN git config --system --add safe.directory '*' \
  && git config --system init.defaultBranch main \
  && git config --system pull.rebase false \
  && git lfs install --system
+# ----------------------------------------------------------------------------
+# Block k: RUN chsh -s /usr/bin/zsh root
+# ----------------------------------------------------------------------------
+# Changes the default interactive shell environment for the superuser ('root') inside the system. 
+# The `chsh` (change shell) utility overrides the default `/bin/bash` profile assignment 
+# with the newly installed `/usr/bin/zsh` terminal processor for all future interactive login connections.
+RUN chsh -s /usr/bin/zsh root
+
+# ----------------------------------------------------------------------------
+# Block l: Here-Document (cat >> /root/.zshrc <<'EOF' ... EOF)
+# ----------------------------------------------------------------------------
+# This block uses a shell structure called a "Here-Document" or "heredoc" (BHB Ch. 1). 
+# The redirection operator `>>` appends a stream block to the end of `/root/.zshrc`. 
+# The delimiter string `<<'EOF'` encapsulates multi-line input. Single-quoting `'EOF'` is an 
+# explicitly protective step: it prevents the host system from executing variable expansions 
+# on the data stream during the build phase, keeping literal values safe.
+# 
+# The enclosed 'PROMPT' line customizes the terminal prompt layout, displaying a custom 
+# colored prefix, current directory path details, and a dynamic exit-status indicator 
+# (showing a green checkmark or a red X depending on the previous command's exit code, BHB Ch. 1).
+RUN cat >> /root/.zshrc <<'EOF'
+
+PROMPT='%F{cyan}[Camila-Lascano]%f %F{yellow}%1~%f %(?.%F{green}√.%F{red}X %?)%f %# '
+EOF
