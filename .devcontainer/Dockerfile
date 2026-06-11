@@ -203,3 +203,16 @@ SHELL ["/bin/bash", "-c"]
 # terminal, their execution path starts here. GitHub Codespaces maps repository folders 
 # inside `/workspaces`, so aligning this path drops users straight into their project repository files.
 WORKDIR /workspaces
+# ----------------------------------------------------------------------------
+# Block j: Git Global and System Configuration
+# ----------------------------------------------------------------------------
+# This block runs system-wide Git adjustments:
+#  - safe.directory '*': Flags all mounted workspace paths as safe, resolving cross-user 
+#    permission issues inside virtual containers.
+#  - init.defaultBranch main: Sets 'main' as the default branch name during initializations.
+#  - pull.rebase false: Configures standard merge-based branch integrations during a pull.
+#  - git lfs install --system: Hooks Git Large File Storage globally to handle binary media assets.
+RUN git config --system --add safe.directory '*' \
+ && git config --system init.defaultBranch main \
+ && git config --system pull.rebase false \
+ && git lfs install --system
