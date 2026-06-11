@@ -54,3 +54,17 @@ ENV DEBIAN_FRONTEND=noninteractive \
     LANG=es_ES.UTF-8 \
     LC_ALL=es_ES.UTF-8 \
     TERM=xterm-256color
+# ----------------------------------------------------------------------------
+# Block d: RUN ... debconf-set-selections
+# ----------------------------------------------------------------------------
+# During the installation of network analysis packages like Wireshark/tshark, 
+# the installer triggers an interactive prompt asking whether non-root users 
+# should be allowed to capture raw packets. 
+#
+# To maintain an automated, non-interactive build, we pre-seed the configuration database. 
+# Using a standard pipeline shell redirection (BHB Ch. 1), we "echo" the string 
+# parameter and pass it via the pipe ("|") operator directly into the standard input (stdin) 
+# of the 'debconf-set-selections' command, pre-answering "false" so the installer proceeds smoothly.
+RUN echo "wireshark-common wireshark-common/install-setuid boolean false" \
+    | debconf-set-selections
+    
