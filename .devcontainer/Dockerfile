@@ -185,4 +185,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
  # to the final layer history.
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
- 
+# ----------------------------------------------------------------------------
+# Block h: SHELL ["/bin/bash", "-c"]
+# ----------------------------------------------------------------------------
+# By default, Docker processes string-based commands using the basic, legacy POSIX 
+# shell (`/bin/sh`). The SHELL instruction overrides this default, switching the 
+# execution context of any subsequent RUN commands to `/bin/bash` with the execute-string flag (`-c`). 
+# This ensures advanced Bash-specific operations—such as arrays, double brackets `[[ ]]`, 
+# and enhanced flow-control (BHB Ch. 1 & 2)—interpret correctly if used during building.
+SHELL ["/bin/bash", "-c"]
+
+# ----------------------------------------------------------------------------
+# Block i: WORKDIR /workspaces
+# ----------------------------------------------------------------------------
+# The WORKDIR instruction specifies the base working directory inside the container's 
+# virtual filesystem layout. Whenever a user interacts with the container or opens a new 
+# terminal, their execution path starts here. GitHub Codespaces maps repository folders 
+# inside `/workspaces`, so aligning this path drops users straight into their project repository files.
+WORKDIR /workspaces
