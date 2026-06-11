@@ -165,4 +165,24 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     \
     # === Modern Readable HTTP Client Utilities ===
     httpie \
-    
+# ----------------------------------------------------------------------------
+ # Block f: Locale activation with sed
+ # ----------------------------------------------------------------------------
+ # We use the stream editor 'sed' with the in-place modification flag '-i' (BHB Ch. 2) 
+ # to locate the commented Spanish locale entry ("# es_ES.UTF-8") inside the system configuration 
+ # file `/etc/locale.gen`, stripping the comment symbol to uncomment it. 
+ # The subsequent 'locale-gen' command reads this file to compile and activate the Spanish system locale.
+ && sed -i 's/# es_ES.UTF-8/es_ES.UTF-8/' /etc/locale.gen \
+ && locale-gen \
+ \
+ # ----------------------------------------------------------------------------
+ # Block g: Post-Installation Cache Cleanup
+ # ----------------------------------------------------------------------------
+ # To minimize image weight, 'apt-get clean' wipes the downloaded package archives (.deb files) 
+ # from the local cache directory. 'rm -rf /var/lib/apt/lists/*' force-deletes the unneeded 
+ # metadata index files fetched during 'apt-get update'. Performing this extraction and purge 
+ # inside the exact same RUN instruction guarantees the discarded files are never written 
+ # to the final layer history.
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
+ 
