@@ -31,3 +31,9 @@ else
   echo "User is not root!"
 
 fi
+
+#Command used for creating a user and changing to the user 
+useradd -m Camilla 
+su - Camilla 
+whoami 
+bash check_root_function.sh
