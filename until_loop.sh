@@ -20,3 +20,8 @@ done
 
 echo "${FILE} appears to have some content in it!" 
 # Show success message
+
+bash until_loop.sh 
+# Run the until loop script
+echo "done" > output.txt
+# Add content to stop the loop

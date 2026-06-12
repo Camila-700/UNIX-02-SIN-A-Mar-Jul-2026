@@ -17,3 +17,8 @@ done
 
 echo "File was found! Exiting..." 
 # Show exit message
+
+bash while_loop.sh
+# Run the while loop script
+touch stoploop
+# Create the stop file to end the loop
