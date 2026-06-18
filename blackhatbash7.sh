@@ -12,3 +12,18 @@ cat log.txt
 awk '{print $1,$2,$3}' log.txt
 awk '{print $2}' log.txt
 awk '{print $3}' log.txt
+awk '{print $1,$NF}' log.txt
+
+# Create an empty file named example_csv.txt.
+touch example_csv.txt
+
+# Overwrite the file with the line "hola,Ash,chao".
+echo "hola,Ash,chao" > example_csv.txt
+
+# Overwrite the file with the line "hola,Pau,chao".
+echo "hola,Pau,chao" > example_csv.txt
+
+# Overwrite the file with the line "a,b,c".
+echo "a,b,c" > example_csv.txt
+
+awk -F',' '{print $1}' example_csv.txt
