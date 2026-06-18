@@ -25,5 +25,11 @@ echo "hola,Pau,chao" > example_csv.txt
 
 # Overwrite the file with the line "a,b,c".
 echo "a,b,c" > example_csv.txt
-
 awk -F',' '{print $1}' example_csv.txt
+
+head log.txt 
+awk 'NR < 10' log.txt
+
+grep "42.236.10.117" log.txt
+awk '{print $7}'
+grep "42.236.10.117" log.txt | awk '{print $7}'
