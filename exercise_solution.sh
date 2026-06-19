@@ -19,4 +19,3 @@ if ping -c 1 "${DOMAIN}" &> /dev/null; then # Send one ping request to the domai
 else # Run this block if the ping command fails.
   echo "failure,${NAME},${DOMAIN},$(date)" >> "${OUTPUT_FILE}" # Append a failure result with the current date to the CSV file.
 fi # End the ping result condition.
-```
