@@ -99,3 +99,7 @@ Once inside the test environment desktop, we open the operating system terminal 
 1. **Test of Modification 1 (mpv):** When executing the command mpv --version, the console responds correctly, displaying information about the installed binaries.
 
 ![alt text](image-15.png)
+
+2. **Test of Modification 2 (neovim):** By starting the code editor with nvim, it is verified that the program has native compilation support.
+
+![alt text](image-16.png)
