@@ -81,3 +81,8 @@ The following shows the initialization sequence of the **PaulaOS** ISO within Vi
 When the virtual machine starts with our ISO, the operating system begins mapping and recognizing the virtual hardware components. It is verified that it passes the checks stably and cleanly, without generating kernel panics.
 
 ![alt text](image-12.png)
+
+### Step 2: Graphical Loading Screen
+The graphical environment boots successfully, displaying the official Ubuntu boot logo. This confirms that the Cubic compressed read-only file system and packaging did not suffer data corruption.
+
+![alt text](image-13.png)
