@@ -57,5 +57,12 @@ The resulting custom distribution was named PaulaOS, developed as part of the co
 
 ![alt text](image-8.png)
 
+### Modification 4: Automating the Graphical Interface Profile
+* **What was done:** We created a configuration file in the path /usr/share/glib-2.0/schemas/99_paulaos_dark_theme.gschema.override using the nano editor. There, we defined the system to use dark mode by default (prefer-dark and Yaru-dark). Finally, we ran the command glib-compile-schemas so that the operating system would save and apply the change.
 
+* **Justification:** Control and customization of the system from the ground up. Instead of manually changing the theme in the settings after the system is installed, making this change directly in the operating system's configuration files ensures that the entire graphical environment (including the Ubuntu installer) loads in dark mode automatically from the first boot, leaving the interface ready and customized for the user.
+
+![alt text](image-9.png)
+
+![alt text](image-10.png)
 
