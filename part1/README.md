@@ -31,3 +31,11 @@ The resulting custom distribution was named PaulaOS, developed as part of the co
 ![alt text](image-1.png)
 ![alt text](image-3.png)
 
+### Modification 2: Implementation of Native Programming Tools
+* **What was done:** Essential software development tools were injected into the system root: the advanced text editor neovim and the metapackage build-essential (which installs the gcc and g++ compilers and the makeutility).
+
+**Justification:** Autonomy of the development environment. By integrating these packages directly into the ISO compilation, we ensure that any developer can write, edit, and compile code in languages ​​like C or C++ natively and immediately from the first boot, eliminating the dependency on a post-installation internet connection.
+
+![alt text](image-4.png)
+![alt text](image-5.png)
+
