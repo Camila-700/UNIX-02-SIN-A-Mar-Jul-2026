@@ -107,3 +107,10 @@ Once inside the test environment desktop, we open the operating system terminal 
 3. **Test of Modification 3 (Alias ​​and /etc/skel):** When executing the quick command ll, the terminal responds by listing the files in detail with their corresponding permissions and colors, confirming the persistence of the injections made in the .bashrc and the automatic reading of the Neovim configurations (init.lua).
 
 ![alt text](image-17.png)
+
+
+## 4. Integrity and Download Files
+
+* **Checksum:** The cryptographic hash used to validate that the file has not been corrupted is located in [checksum.txt](./checksum.txt).
+
+* **Storage Server:** The download link for the ISO file in the cloud is recorded in the file [iso_link.txt](./iso_link.txt).
