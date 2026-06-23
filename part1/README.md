@@ -72,3 +72,12 @@ The resulting custom distribution was named PaulaOS, developed as part of the co
 * **Justification:** Storage resource optimization. Deep cleaning removes unnecessary caches and downloaded packages, significantly compressing the final size of the read-only filesystem and lightening the ISO image.
 
 ![alt text](image-11.png)
+
+
+## 3. Boot Process Evidence
+The following shows the initialization sequence of the **PaulaOS** ISO within VirtualBox, along with functionality tests in the environment:
+
+### Step 1: Linux Kernel Initialization
+When the virtual machine starts with our ISO, the operating system begins mapping and recognizing the virtual hardware components. It is verified that it passes the checks stably and cleanly, without generating kernel panics.
+
+![alt text](image-12.png)
