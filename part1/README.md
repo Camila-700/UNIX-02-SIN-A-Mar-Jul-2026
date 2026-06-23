@@ -91,3 +91,11 @@ The graphical environment boots successfully, displaying the official Ubuntu boo
 The initial Ubuntu wizard deploys successfully. Here, the effectiveness of our Modification 4 is verified: the entire installer and visual elements automatically adopt the native Dark Mode without user intervention.
 
 ![alt text](image-14.png)
+
+
+### Step 4: Validating Modifications in the Terminal (Active Environment)
+
+Once inside the test environment desktop, we open the operating system terminal to validate that all our previous configurations load correctly:
+1. **Test of Modification 1 (mpv):** When executing the command mpv --version, the console responds correctly, displaying information about the installed binaries.
+
+![alt text](image-15.png)
