@@ -86,3 +86,8 @@ When the virtual machine starts with our ISO, the operating system begins mappin
 The graphical environment boots successfully, displaying the official Ubuntu boot logo. This confirms that the Cubic compressed read-only file system and packaging did not suffer data corruption.
 
 ![alt text](image-13.png)
+
+### Step 3: Welcome Interface and Dark Theme Persistence
+The initial Ubuntu wizard deploys successfully. Here, the effectiveness of our Modification 4 is verified: the entire installer and visual elements automatically adopt the native Dark Mode without user intervention.
+
+![alt text](image-14.png)
