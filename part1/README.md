@@ -66,3 +66,9 @@ The resulting custom distribution was named PaulaOS, developed as part of the co
 
 ![alt text](image-10.png)
 
+### Extra Modification: Storage Debugging and Optimization
+* **What was done:** Before closing the chroot cage and compiling the ISO, a filesystem debugging routine was run using the commands apt autoremove -y, apt clean, and recursive removal of temporary files in /var/lib/apt/lists/ and /tmp/.
+
+* **Justification:** Storage resource optimization. Deep cleaning removes unnecessary caches and downloaded packages, significantly compressing the final size of the read-only filesystem and lightening the ISO image.
+
+![alt text](image-11.png)
