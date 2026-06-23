@@ -16,3 +16,18 @@
 The resulting custom distribution was named PaulaOS, developed as part of the course's integrated project, maintaining the stability and compatibility of Ubuntu 24.04 LTS while incorporating configurations and tools adapted to the project's requirements.
 
 ![alt text](image.png)
+
+
+## 2. List of Modifications and Justification
+
+* **Modification 1: Replacement of System Multimedia Software :**
+
+* **What was done:** Within the Cubic `chroot` environment, the repositories were updated with `apt update` and the **`mpv`** multimedia player was installed along with its native dependency libraries.
+
+* **Justification:** Resource and performance optimization. Unix environments geared towards servers or development do not require heavy multimedia players or those with redundant graphical interfaces. The inclusion of `mpv` offers a minimalist, high-performance alternative that consumes less RAM and CPU cycles on the operating system.
+
+> *Note: Initially, the package manager returned a localization error due to a reversal in the letter order ("mvp"), which was corrected and successfully installed as `mpv`.* 
+
+![alt text](image-1.png)
+![alt text](image-3.png)
+
