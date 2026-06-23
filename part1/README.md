@@ -20,15 +20,16 @@ The resulting custom distribution was named PaulaOS, developed as part of the co
 
 ## 2. List of Modifications and Justification
 
-* **Modification 1: Replacement of System Multimedia Software :**
+## Modification 1: Replacement of System Multimedia Software :** 
 
-* **What was done:** Within the Cubic `chroot` environment, the repositories were updated with `apt update` and the **`mpv`** multimedia player was installed along with its native dependency libraries.
+* **What was done:** Within the Cubic chroot environment, the repositories were updated with apt update and the mpv multimedia player was installed along with its native dependency libraries.
 
-* **Justification:** Resource and performance optimization. Unix environments geared towards servers or development do not require heavy multimedia players or those with redundant graphical interfaces. The inclusion of `mpv` offers a minimalist, high-performance alternative that consumes less RAM and CPU cycles on the operating system.
+* **Justification:** Resource and performance optimization. Unix environments geared towards servers or development do not require heavy multimedia players or those with redundant graphical interfaces. The inclusion of mpv offers a minimalist, high-performance alternative that consumes less RAM and CPU cycles on the operating system.
 
-> *Note: Initially, the package manager returned a localization error due to a reversal in the letter order ("mvp"), which was corrected and successfully installed as `mpv`.* 
+> *Note: Initially, the package manager returned a localization error due to a reversal in the letter order ("mvp"), which was corrected and successfully installed as mpv.* 
 
 ![alt text](image-1.png)
+
 ![alt text](image-3.png)
 
 ### Modification 2: Implementation of Native Programming Tools
@@ -37,5 +38,24 @@ The resulting custom distribution was named PaulaOS, developed as part of the co
 **Justification:** Autonomy of the development environment. By integrating these packages directly into the ISO compilation, we ensure that any developer can write, edit, and compile code in languages ​​like C or C++ natively and immediately from the first boot, eliminating the dependency on a post-installation internet connection.
 
 ![alt text](image-4.png)
+
 ![alt text](image-5.png)
+
+### Modification 3: Customizing the Terminal and Neovim using `/etc/skel`
+
+* **What was done:** We modified the /etc/skel folder, which is the template ("skeleton") that Linux uses to create any new user or boot the temporary session from the Live CD. We made two configurations:
+
+1. **Neovim configuration:** We used the cat redirection command to create the /etc/skel/.config/nvim/init.lua file. There, we enabled normal and relative line numbering (vim.opt.number and vim.opt.relativenumber), enabled mouse support, set tabs to 4 spaces, and programmed a confirmation message in the status bar. 
+
+2. **Terminal Aliases:** Using echo commands, we added permanent shortcuts within the .bashrc file: the alias ll (to view a detailed list of files in color) and the alias c (to clear the screen with the clear command).
+
+* **Justification:** Automating the development environment. By making these changes directly to the base template /etc/skel, we avoid having to manually configure preferences each time the system starts in test mode or a new user is created, ensuring the tools are ready for programming from the very beginning.
+
+![alt text](image-6.png)
+
+![alt text](image-7.png)
+
+![alt text](image-8.png)
+
+
 
