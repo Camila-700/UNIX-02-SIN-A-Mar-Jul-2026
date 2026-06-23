@@ -103,3 +103,7 @@ Once inside the test environment desktop, we open the operating system terminal 
 2. **Test of Modification 2 (neovim):** By starting the code editor with nvim, it is verified that the program has native compilation support.
 
 ![alt text](image-16.png)
+
+3. **Test of Modification 3 (Alias ​​and /etc/skel):** When executing the quick command ll, the terminal responds by listing the files in detail with their corresponding permissions and colors, confirming the persistence of the injections made in the .bashrc and the automatic reading of the Neovim configurations (init.lua).
+
+![alt text](image-17.png)
