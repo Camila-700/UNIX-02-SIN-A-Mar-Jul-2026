@@ -11,7 +11,7 @@
 
 ## Team Members
 
-- Asheley Espinoza
+- Ashley Espinoza
 - Camila Lascano
 - Paula Simbaña
 
