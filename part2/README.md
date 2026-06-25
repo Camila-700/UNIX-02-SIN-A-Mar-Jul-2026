@@ -36,3 +36,31 @@ After the installation, I checked the versions of the tools in the terminal. The
 ### Evidence
 ![alt text](image-4.png)
 ![alt text](image-3.png)
+
+## Step 2 - Docker build environment
+
+In this step, I created the Dockerfile for Part 2 of the project.
+
+This file is located inside the `part2` folder. The Dockerfile prepares the build environment for the 64-bit kernel.
+
+I used a Docker image with the x86_64 cross compiler as the base. Then, I added the required tools for the kernel build process, such as NASM, GRUB, xorriso, mtools, and Make.
+
+This step is important because the project requires a reproducible build environment. With Docker, the kernel can be compiled using the same tools every time, even on another computer.
+
+### Evidence
+![alt text](image-5.png)
+
+## Step 3 - Makefile creation
+
+In this step, I created the Makefile for Part 2.
+
+The Makefile is located inside the `part2` folder. This file organizes the build process for the kernel.
+
+The Makefile will assemble the boot files, compile the C file, link all object files, and generate the final bootable ISO.
+
+This step is important because it makes the project easier to build. Instead of running many separate commands manually, the build process is controlled from one file.
+
+The Makefile also includes a verification option to check if the generated kernel is compatible with Multiboot2. This is required because GRUB needs to recognize the kernel before it can boot it.
+
+### Evidence
+![alt text](image-6.png)![alt text](image-7.png)
