@@ -48,7 +48,7 @@ I used a Docker image with the x86_64 cross compiler as the base. Then, I added 
 This step is important because the project requires a reproducible build environment. With Docker, the kernel can be compiled using the same tools every time, even on another computer.
 
 ### Evidence
-![alt text](image-5.png)
+![alt text](image-8.png)
 
 ## Step 3 - Makefile creation
 
@@ -64,3 +64,20 @@ The Makefile also includes a verification option to check if the generated kerne
 
 ### Evidence
 ![alt text](image-6.png)![alt text](image-7.png)
+
+## Step 4 - Linker and GRUB configuration
+
+In this step, I created the linker script and the GRUB configuration file.
+
+The linker script is located in `targets/x86_64/linker.ld`. This file defines how the kernel sections are organized in memory. It places the kernel at 1 MB and keeps the Multiboot2 header at the beginning of the boot section. This is important because GRUB needs to find the Multiboot2 header when it loads the kernel.
+
+The GRUB configuration file is located in `targets/x86_64/grub.cfg`. This file defines the boot menu entry for the kernel. It tells GRUB to load `/boot/kernel.bin` using Multiboot2.
+
+This step prepares the project so the kernel can be linked correctly and later loaded by GRUB inside the bootable ISO.
+
+### Evidence
+![alt text](image-9.png)
+![alt text](image-10.png)
+
+![alt text](image-11.png)
+![alt text](image-12.png)
