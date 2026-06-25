@@ -1,4 +1,4 @@
-````markdown
+
 # Integrative Project: Build, Boot, and Attack
 
 **Course:** Operating Systems  
@@ -31,7 +31,6 @@ The project consists of:
 
 ## Repository Structure
 
-```text
 .
 ├── Part1-Cubic/
 │   ├── README.md
@@ -47,7 +46,7 @@ The project consists of:
 │   └── evidence
 │
 └── README.md
-````
+
 
 ---
 
@@ -66,7 +65,7 @@ The project consists of:
 The complete project demonstration is available at the following Google Drive link:
 
 **Google Drive:**
-https://drive.google.com/your-video-link
+
 
 The demonstration includes:
 
@@ -106,5 +105,3 @@ Each project part includes its own README with detailed instructions.
 * Project evidence
 * Repository with commit history
 
-```
-```
