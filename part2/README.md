@@ -93,3 +93,19 @@ The header includes the Multiboot2 magic number, the architecture field, the hea
 This step is important because without a valid Multiboot2 header, GRUB would not load the kernel correctly.
 
 ### Evidence
+![alt text](image-13.png)
+
+## Step 6 - Main boot assembly
+
+In this step, I created the `main.asm` file inside `src/boot`.
+
+This file contains the main boot process of the kernel. The kernel starts in 32-bit protected mode because GRUB loads it in that state.
+
+In this file, I prepared the stack and added the required checks before entering 64-bit mode. I checked Multiboot2, CPUID, and long mode support.
+
+After the checks, I created the page tables and identity mapped the first 1 GB of memory. Then, I enabled paging, loaded the 64-bit GDT, and jumped to the 64-bit entry point.
+
+This step is one of the most important parts of the project because it prepares the transition from 32-bit mode to 64-bit long mode.
+
+### Evidence
+![alt text](image-14.png)
