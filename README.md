@@ -30,7 +30,7 @@ The project consists of:
 ---
 
 ## Repository Structure
-
+```text
 .
 ├── Part1-Cubic/
 │   ├── README.md
@@ -46,7 +46,7 @@ The project consists of:
 │   └── evidence
 │
 └── README.md
-
+```
 
 ---
 
