@@ -190,4 +190,15 @@ The kernel booted correctly and printed the custom group message on the screen.
 This step is important because it proves that the kernel was compiled, loaded by GRUB, and executed successfully in 64-bit long mode.
 
 ### Evidence
-![que](image-22.png)
+![alt text](image-22.png)
+
+## Step 13 - Release and checksum
+
+In this step, I copied the final generated ISO to the `release` folder.
+
+The final ISO is saved as `release/kernel.iso`. I also generated a SHA256 checksum file named `kernel.iso.sha256`.
+
+This step is important because the release folder contains the final file that can be tested or submitted. The checksum helps verify that the ISO file was not changed or corrupted.
+
+### Evidence
+![alt text](image-23.png)
