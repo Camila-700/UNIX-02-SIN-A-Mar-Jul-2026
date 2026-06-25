@@ -15,4 +15,3 @@ Important screenshots:
 7. Nmap scan for p-web-01.
 8. Nmap scan for p-web-02.
 9. Nmap scan for p-ftp-01.
-10. Git commits and push.
