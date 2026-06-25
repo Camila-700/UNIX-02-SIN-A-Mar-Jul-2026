@@ -139,3 +139,66 @@ This step is important because it proves that the kernel reached 64-bit mode and
 
 ### Evidence
 ![alt text](image-16.png)
+
+## Step 9- Docker image build
+
+In this step, I built the Docker image for the kernel project.
+
+The Docker image uses the Dockerfile created in Part 2. This image includes the tools needed to build the kernel, such as the x86_64 cross compiler, NASM, GRUB, xorriso, mtools, and Make.
+
+This step is important because it creates a reproducible build environment. The kernel will not depend only on the packages installed in my Ubuntu virtual machine. Instead, the build process will run inside Docker with the required tools.
+
+After building the image, I verified that the image `uide-kernel-build` was created successfully.
+
+### Evidence
+![alt text](image-17.png)
+![alt text](image-19.png)
+
+## Step 10 - Kernel ISO build
+
+In this step, I compiled the 64-bit kernel inside the Docker environment.
+
+The build process used the Makefile. It assembled the boot files, compiled the C kernel file, linked all object files, and generated the final bootable ISO.
+
+The final file is `build/kernel.iso`.
+
+This step is important because it proves that the source code can be compiled into a bootable kernel image.
+
+### Evidence
+![alt text](image-20.png)
+
+## Step 11 - Multiboot2 verification
+
+In this step, I verified that the generated kernel is compatible with Multiboot2.
+
+This verification is important because GRUB needs to recognize the kernel before it can boot it.
+
+The result confirmed that `kernel.bin` is a valid Multiboot2 kernel.
+
+### Evidence
+
+![alt text](image-21.png)
+
+## Step 12 - QEMU boot test
+
+In this step, I tested the generated kernel ISO in QEMU.
+
+QEMU opened a virtual machine and loaded the `kernel.iso` file. GRUB loaded the kernel using the Multiboot2 configuration.
+
+The kernel booted correctly and printed the custom group message on the screen.
+
+This step is important because it proves that the kernel was compiled, loaded by GRUB, and executed successfully in 64-bit long mode.
+
+### Evidence
+![alt text](image-22.png)
+
+## Step 13 - Release and checksum
+
+In this step, I copied the final generated ISO to the `release` folder.
+
+The final ISO is saved as `release/kernel.iso`. I also generated a SHA256 checksum file named `kernel.iso.sha256`.
+
+This step is important because the release folder contains the final file that can be tested or submitted. The checksum helps verify that the ISO file was not changed or corrupted.
+
+### Evidence
+![alt text](image-23.png)
