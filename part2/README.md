@@ -166,3 +166,28 @@ This step is important because it proves that the source code can be compiled in
 
 ### Evidence
 ![alt text](image-20.png)
+
+## Step 11 - Multiboot2 verification
+
+In this step, I verified that the generated kernel is compatible with Multiboot2.
+
+This verification is important because GRUB needs to recognize the kernel before it can boot it.
+
+The result confirmed that `kernel.bin` is a valid Multiboot2 kernel.
+
+### Evidence
+
+![alt text](image-21.png)
+
+## Step 12 - QEMU boot test
+
+In this step, I tested the generated kernel ISO in QEMU.
+
+QEMU opened a virtual machine and loaded the `kernel.iso` file. GRUB loaded the kernel using the Multiboot2 configuration.
+
+The kernel booted correctly and printed the custom group message on the screen.
+
+This step is important because it proves that the kernel was compiled, loaded by GRUB, and executed successfully in 64-bit long mode.
+
+### Evidence
+![que](image-22.png)
