@@ -81,3 +81,15 @@ This step prepares the project so the kernel can be linked correctly and later l
 
 ![alt text](image-11.png)
 ![alt text](image-12.png)
+
+## Step 5 - Multiboot2 header
+
+In this step, I created the `header.asm` file inside `src/boot`.
+
+This file contains the Multiboot2 header. This header is required because GRUB needs to identify the kernel before loading it.
+
+The header includes the Multiboot2 magic number, the architecture field, the header length, and the checksum. These values help GRUB validate the kernel file during the boot process.
+
+This step is important because without a valid Multiboot2 header, GRUB would not load the kernel correctly.
+
+### Evidence
