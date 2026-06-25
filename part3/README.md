@@ -2,150 +2,276 @@
 
 ## Objective
 
-This section documents the deployment, verification, and authorized attack technique for the Black Hat Bash laboratory environment.
+This section documents the deployment, verification, and authorized reconnaissance technique for the Black Hat Bash laboratory environment.
 
-The lab is intentionally vulnerable and must only be executed in an isolated environment controlled by the group. No scans or attacks are performed outside the lab network.
+The lab is intentionally vulnerable and was executed only in an isolated environment controlled by the group. No scans or attacks were performed outside the lab network.
 
 ## Repository and Branch
 
-- Project repository: UNIX-02-SIN-A-Mar-Jul-2026
-- Working branch: integrative-project
-- Source branch: dev2
-- Part assigned: Part 3 - Black Hat Bash Lab
-- Responsible member: Camila Lascano
+* Project repository: UNIX-02-SIN-A-Mar-Jul-2026
+* Working branch: integrative-project
+* Source branch: dev2
+* Part assigned: Part 3 - Black Hat Bash Lab
+* Responsible member: Camila Lascano
+
+## Execution Environment
+
+The Black Hat Bash lab was deployed and tested inside an Ubuntu virtual machine running on Oracle VirtualBox.
+
+GitHub Codespaces was used only for editing documentation, organizing evidence, commits, and pushing the project files to GitHub.
+
+* VM name: BHB-Lab-Ubuntu
+* Hypervisor: Oracle VirtualBox
+* Guest OS: Ubuntu
+* Lab path inside VM: `~/Black-Hat-Bash/lab`
+* Evidence path inside VM: `~/part3-evidence`
 
 ## 3A - Lab Setup and Verification
 
-### Required tools
+### Required Tools
 
-The lab requires:
+The lab was verified using:
 
-- Docker
-- Docker Compose
-- Make
-- Git
-- iproute2
+* Docker
+* Docker Compose
+* Make
+* Git
+* iproute2
+* Nmap
+* curl
 
-The current Codespaces environment is used for editing, documentation, scripts, and commits. The actual lab deployment must be executed in a Kali, Debian, or Ubuntu environment with Docker and Docker Compose available.
+### Official Lab Repository
 
-### Official lab repository
+```bash
+git clone https://github.com/dolevf/Black-Hat-Bash.git
+cd Black-Hat-Bash/lab
+```
 
-    git clone https://github.com/dolevf/Black-Hat-Bash.git
-    cd Black-Hat-Bash/lab
+### Deployment
 
-### Deployment command
+The lab was deployed with:
 
-    sudo make deploy
+```bash
+sudo make deploy
+```
 
-While the deployment is running, the installation log can be monitored with:
+The deployment process created and started the lab containers. The terminal output showed:
 
-    tail -f /var/log/lab-install.log
+```text
+OK: all containers appear to be running.
+OK: Lab is up and provisioned.
+```
 
-### Verification commands
+The lab was also restarted and verified with:
 
-After deployment, the lab must be verified with:
+```bash
+sudo docker compose up -d
+```
 
-    sudo make test
+This showed `Running 8/8`, confirming that the expected lab containers were running.
 
-Expected result:
+### Verification Commands
 
-    Lab is up.
+Docker and Docker Compose were verified with:
 
-The running containers must be checked with:
+```bash
+docker --version
+docker compose version
+```
 
-    sudo docker ps --format "{{.Names}}"
+Running containers were verified with:
 
-Expected result: 8 containers running, including public machines with p-* names and corporate machines with c-* names.
+```bash
+sudo docker ps
+```
 
-The Docker bridge networks must be checked with:
+Container names were verified with:
 
-    ip addr | grep "br_"
+```bash
+sudo docker ps --format "{{.Names}}"
+```
 
-Expected networks:
+Docker bridge networks were verified with:
 
-- br_public with gateway 172.16.10.1
-- br_corporate with gateway 10.1.0.1
+```bash
+ip addr | grep br_
+```
 
-Access to a lab machine must be demonstrated with:
+Access to one lab machine was demonstrated with:
 
-    sudo docker exec -it p-web-01 bash
+```bash
+sudo docker exec -it p-web-01 bash
+hostname
+exit
+```
 
-## Evidence checklist
+## Evidence Checklist
 
-| Evidence | Command or action | Status |
-|---|---|---|
-| Docker version | docker --version | Pending |
-| Docker Compose version | docker compose version | Pending |
-| Lab deployment | sudo make deploy | Pending |
-| Install log | tail -f /var/log/lab-install.log | Pending |
-| Lab test | sudo make test | Pending |
-| Running containers | sudo docker ps --format "{{.Names}}" | Pending |
-| Bridge networks | ip addr \| grep "br_" | Pending |
-| Container access | sudo docker exec -it p-web-01 bash | Pending |
+| Evidence               | Command or action                                | Status    |
+| ---------------------- | ------------------------------------------------ | --------- |
+| Docker version         | `docker --version`                               | Completed |
+| Docker Compose version | `docker compose version`                         | Completed |
+| Lab deployment         | `sudo make deploy` / `sudo docker compose up -d` | Completed |
+| Running containers     | `sudo docker ps`                                 | Completed |
+| Container names        | `sudo docker ps --format "{{.Names}}"`           | Completed |
+| Bridge networks        | `ip addr \| grep br_`                            | Completed |
+| Container access       | `sudo docker exec -it p-web-01 bash`             | Completed |
+| Nmap scan p-web-01     | `nmap -sV -Pn 172.16.10.10`                      | Completed |
+| Nmap scan p-web-02     | `nmap -sV -Pn 172.16.10.12`                      | Completed |
+| Nmap scan p-ftp-01     | `nmap -sV -Pn 172.16.10.11`                      | Completed |
 
 ## Lab Architecture
 
-This table will be completed after the lab is deployed and verified.
-
-| Machine | Public IP | Corporate IP | Hostname | Role |
-|---|---:|---:|---|---|
-| p-web-01 | 172.16.10.10 | N/A | Pending | Public web server |
-| p-web-02 | Pending | N/A | Pending | Public web server |
-| p-ftp-01 | Pending | N/A | Pending | Public FTP server |
-| c-* | N/A | Pending | Pending | Corporate network machine |
+| Machine      |      Public IP | Corporate IP | Hostname                           | Role                       |
+| ------------ | -------------: | -----------: | ---------------------------------- | -------------------------- |
+| p-web-01     |   172.16.10.10 |          N/A | p-web-01.acme-infinity-servers.com | Public web server          |
+| p-ftp-01     |   172.16.10.11 |          N/A | p-ftp-01                           | Public FTP and web server  |
+| p-web-02     |   172.16.10.12 |          N/A | p-web-02                           | Public web server          |
+| p-jumpbox-01 | 172.16.10.0/24 |          N/A | p-jumpbox-01                       | Public jumpbox             |
+| c-db-01      |            N/A |  10.1.0.0/24 | c-db-01                            | Corporate database machine |
+| c-db-02      |            N/A |  10.1.0.0/24 | c-db-02                            | Corporate database machine |
+| c-redis-01   |            N/A |  10.1.0.0/24 | c-redis-01                         | Corporate Redis service    |
+| c-backup-01  |            N/A |  10.1.0.0/24 | c-backup-01                        | Corporate backup machine   |
 
 ## Network Diagram
 
-                Black Hat Bash Lab
+```text
+                    Black Hat Bash Lab
 
-        Public network: 172.16.10.0/24
-        Gateway: br_public - 172.16.10.1
+            Public network: 172.16.10.0/24
+            Gateway: br_public - 172.16.10.1
 
-        +-------------+      +-------------+      +-------------+
-        |  p-web-01   |      |  p-web-02   |      |  p-ftp-01   |
-        | 172.16.10.x |      | 172.16.10.x |      | 172.16.10.x |
-        +-------------+      +-------------+      +-------------+
+    +-------------+      +-------------+      +-------------+      +----------------+
+    |  p-web-01   |      |  p-ftp-01   |      |  p-web-02   |      | p-jumpbox-01   |
+    |172.16.10.10 |      |172.16.10.11 |      |172.16.10.12 |      |172.16.10.x     |
+    +-------------+      +-------------+      +-------------+      +----------------+
 
 
-        Corporate network: 10.1.0.0/24
-        Gateway: br_corporate - 10.1.0.1
+            Corporate network: 10.1.0.0/24
+            Gateway: br_corporate - 10.1.0.1
 
-        +-------------+      +-------------+      +-------------+
-        |    c-*      |      |    c-*      |      |    c-*      |
-        |  10.1.0.x   |      |  10.1.0.x   |      |  10.1.0.x   |
-        +-------------+      +-------------+      +-------------+
+    +-------------+      +-------------+      +-------------+      +-------------+
+    |   c-db-01   |      |   c-db-02   |      | c-redis-01  |      | c-backup-01 |
+    |  10.1.0.x   |      |  10.1.0.x   |      |  10.1.0.x   |      |  10.1.0.x   |
+    +-------------+      +-------------+      +-------------+      +-------------+
+```
 
-## 3B - Authorized Hacking Technique
+## Evidence Files
 
-Chosen technique: pending.
+Evidence text files are stored in:
 
-Possible techniques:
+```text
+part3/evidence/
+```
 
-- Basic: Port scanning with nmap.
-- Intermediate: Web fingerprinting with WhatWeb.
-- Intermediate: Directory enumeration with dirsearch.
-- Intermediate: Anonymous FTP login test.
-- Advanced: Template-based vulnerability scanning with Nuclei.
+Collected evidence files:
 
-The selected technique will include:
+```text
+01_docker_version.txt
+02_docker_compose_version.txt
+03_docker_ps.txt
+04_container_names.txt
+05_bridge_networks.txt
+06_p_web_01_access.txt
+07_nmap_p_web_01.txt
+08_nmap_p_web_02.txt
+09_nmap_p_ftp_01.txt
+```
 
-1. Command executed.
-2. Target machine.
-3. Output evidence.
-4. Technical interpretation.
-5. Explanation of what information or access was obtained.
+Screenshots are stored in:
 
-## Safety Statement
+```text
+part3/screenshots/
+```
 
-All testing is performed only against the Black Hat Bash lab environment deployed by the group. No scans, attacks, or enumeration activities are performed against public networks, university infrastructure, or third-party systems.
+Expected screenshot files:
 
-## Virtual Machine Evidence
-
-The Black Hat Bash lab was deployed and tested in an Ubuntu virtual machine running on Oracle VirtualBox.
-
-GitHub Codespaces was used for editing documentation, organizing evidence, and committing the project files. The real Docker lab execution, bridge network validation, container access test, and Nmap scans were performed inside the VM.
+```text
+01_docker_version.png
+02_docker_compose_version.png
+03_lab_running_8_containers.png
+04_container_names.png
+05_bridge_networks.png
+06_p_web_01_access.png
+07_nmap_p_web_01.png
+08_nmap_p_web_02.png
+09_nmap_p_ftp_01.png
+extra_lab_deployed_and_provisioned.png
+```
 
 The VM evidence log is available at:
 
 ```text
 part3/VM_EVIDENCE_LOG.md
+```
+
+## 3B - Authorized Hacking Technique
+
+### Chosen Technique
+
+The selected technique was a basic port and service scan using Nmap.
+
+This technique identifies open TCP ports and service versions. It is useful during reconnaissance because it shows which services are exposed and what technologies are running on each target.
+
+### Commands Executed
+
+```bash
+nmap -sV -Pn 172.16.10.10
+nmap -sV -Pn 172.16.10.12
+nmap -sV -Pn 172.16.10.11
+```
+
+Options:
+
+* `-sV`: detects service versions.
+* `-Pn`: skips host discovery and treats the host as online.
+
+## Results and Interpretation
+
+### p-web-01 - 172.16.10.10
+
+Nmap found:
+
+```text
+8081/tcp open  http  Werkzeug httpd 3.0.1 (Python 3.12.3)
+```
+
+This means that `p-web-01` exposes an HTTP service on TCP port `8081`. The service is running Werkzeug with Python, which indicates a Python-based web application, likely related to Flask or Werkzeug. This identifies a web attack surface for later authorized testing.
+
+### p-web-02 - 172.16.10.12
+
+Nmap found:
+
+```text
+80/tcp open  http  Apache httpd 2.4.57 ((Debian))
+```
+
+This means that `p-web-02` exposes a public HTTP service on TCP port `80` using Apache on Debian. This identifies the server technology and confirms a public-facing web service.
+
+### p-ftp-01 - 172.16.10.11
+
+Nmap found:
+
+```text
+21/tcp open  ftp   vsftpd 3.0.5
+80/tcp open  http  Apache httpd 2.4.58 ((Ubuntu))
+```
+
+This means that `p-ftp-01` exposes both FTP and HTTP services. The FTP service is important because it could be tested later for anonymous login, weak credentials, or FTP misconfigurations inside the isolated lab. The HTTP service also represents a web attack surface.
+
+## Demo Video Plan
+
+The Part 3 demo video should show:
+
+1. Ubuntu VM running in Oracle VirtualBox.
+2. Docker and Docker Compose versions.
+3. Lab containers running with `sudo docker ps`.
+4. Container names with `sudo docker ps --format "{{.Names}}"`.
+5. Public and corporate bridge networks with `ip addr | grep br_`.
+6. Access to `p-web-01` with `sudo docker exec -it p-web-01 bash`.
+7. Nmap scan results for `p-web-01`, `p-web-02`, and `p-ftp-01`.
+8. Technical interpretation of the `p-web-01` result.
+
+## Safety Statement
+
+All testing was performed only against the Black Hat Bash lab environment deployed by the group. No scans, attacks, or enumeration activities were performed against public networks, university infrastructure, or third-party systems.
