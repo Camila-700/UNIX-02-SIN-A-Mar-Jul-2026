@@ -138,3 +138,14 @@ The selected technique will include:
 ## Safety Statement
 
 All testing is performed only against the Black Hat Bash lab environment deployed by the group. No scans, attacks, or enumeration activities are performed against public networks, university infrastructure, or third-party systems.
+
+## Virtual Machine Evidence
+
+The Black Hat Bash lab was deployed and tested in an Ubuntu virtual machine running on Oracle VirtualBox.
+
+GitHub Codespaces was used for editing documentation, organizing evidence, and committing the project files. The real Docker lab execution, bridge network validation, container access test, and Nmap scans were performed inside the VM.
+
+The VM evidence log is available at:
+
+```text
+part3/VM_EVIDENCE_LOG.md

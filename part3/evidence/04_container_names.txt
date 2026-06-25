@@ -1,0 +1,8 @@
+p-web-02
+p-jumpbox-01
+p-web-01
+p-ftp-01
+c-backup-01
+c-redis-01
+c-db-02
+c-db-01

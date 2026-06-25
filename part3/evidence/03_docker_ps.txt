@@ -1,0 +1,9 @@
+CONTAINER ID   IMAGE             COMMAND                  CREATED          STATUS          PORTS      NAMES
+6f7125bcd234   lab-p-web-02      "docker-entrypoint.s..." 13 hours ago     Up 36 seconds   80/tcp     p-web-02
+1a9f6bed3125   lab-p-jumpbox-01  "/bin/sh -c 'service..." 13 hours ago     Up 37 seconds              p-jumpbox-01
+e3a043e22b91   lab-p-web-01      "python3 -m flask ru..." 13 hours ago     Up 37 seconds              p-web-01
+9016a4759fbf   lab-p-ftp-01      "/bin/sh -c 'service..." 13 hours ago     Up 37 seconds              p-ftp-01
+6945c095173a   lab-c-backup-01   "/bin/sh -c 'service..." 13 hours ago     Up 37 seconds              c-backup-01
+518f408664e4   lab-c-redis-01    "/bin/sh -c 'service..." 13 hours ago     Up 37 seconds   6379/tcp   c-redis-01
+1837bb462b52   lab-c-db-02       "docker-entrypoint.s..." 13 hours ago     Up 37 seconds   3306/tcp   c-db-02
+0c34eb54130e   lab-c-db-01       "/bin/sh -c 'service..." 13 hours ago     Up 37 seconds              c-db-01
