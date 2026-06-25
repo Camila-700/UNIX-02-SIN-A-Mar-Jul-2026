@@ -109,3 +109,19 @@ This step is one of the most important parts of the project because it prepares 
 
 ### Evidence
 ![alt text](image-14.png)
+
+## Step 7 - Long mode entry
+
+In this step, I created the `long_mode.asm` file inside `src/boot`.
+
+This file contains the first code that runs after the kernel enters 64-bit long mode.
+
+The code clears the segment registers and then calls `kernel_main`, which is the main function written in C.
+
+After calling the C code, the kernel enters a halt loop. This keeps the system stable and prevents the CPU from executing random memory after the kernel finishes printing the message.
+
+This step connects the assembly boot process with the C kernel code.
+
+### Evidence
+![alt text](image-15.png)
+
