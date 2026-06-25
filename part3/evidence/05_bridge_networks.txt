@@ -1,0 +1,14 @@
+4: br_corporate: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+    inet 10.1.0.1/24 brd 10.1.0.255 scope global br_corporate
+5: br_public: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default
+    inet 172.16.10.1/24 brd 172.16.10.255 scope global br_public
+6: veth189fdd0if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br_corporate state UP group default
+7: veth00821dd0if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br_public state UP group default
+8: veth4c8dc780if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br_corporate state UP group default
+9: vethdcb98e0if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br_corporate state UP group default
+10: veth9515d3fif2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br_corporate state UP group default
+11: vethf830bed0if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br_public state UP group default
+12: veth86ffb460if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br_corporate state UP group default
+13: veth019246b0if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br_public state UP group default
+14: veth258bc200if2: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br_corporate state UP group default
+15: veth5d7cc240if3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master br_public state UP group default
