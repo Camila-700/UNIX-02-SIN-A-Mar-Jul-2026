@@ -139,3 +139,30 @@ This step is important because it proves that the kernel reached 64-bit mode and
 
 ### Evidence
 ![alt text](image-16.png)
+
+## Step 9- Docker image build
+
+In this step, I built the Docker image for the kernel project.
+
+The Docker image uses the Dockerfile created in Part 2. This image includes the tools needed to build the kernel, such as the x86_64 cross compiler, NASM, GRUB, xorriso, mtools, and Make.
+
+This step is important because it creates a reproducible build environment. The kernel will not depend only on the packages installed in my Ubuntu virtual machine. Instead, the build process will run inside Docker with the required tools.
+
+After building the image, I verified that the image `uide-kernel-build` was created successfully.
+
+### Evidence
+![alt text](image-17.png)
+![alt text](image-19.png)
+
+## Step 10 - Kernel ISO build
+
+In this step, I compiled the 64-bit kernel inside the Docker environment.
+
+The build process used the Makefile. It assembled the boot files, compiled the C kernel file, linked all object files, and generated the final bootable ISO.
+
+The final file is `build/kernel.iso`.
+
+This step is important because it proves that the source code can be compiled into a bootable kernel image.
+
+### Evidence
+![alt text](image-20.png)
