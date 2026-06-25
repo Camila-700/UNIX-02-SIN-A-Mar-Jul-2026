@@ -153,3 +153,16 @@ After building the image, I verified that the image `uide-kernel-build` was crea
 ### Evidence
 ![alt text](image-17.png)
 ![alt text](image-19.png)
+
+## Step 10 - Kernel ISO build
+
+In this step, I compiled the 64-bit kernel inside the Docker environment.
+
+The build process used the Makefile. It assembled the boot files, compiled the C kernel file, linked all object files, and generated the final bootable ISO.
+
+The final file is `build/kernel.iso`.
+
+This step is important because it proves that the source code can be compiled into a bootable kernel image.
+
+### Evidence
+![alt text](image-20.png)
