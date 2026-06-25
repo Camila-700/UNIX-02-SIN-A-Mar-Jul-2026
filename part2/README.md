@@ -125,3 +125,17 @@ This step connects the assembly boot process with the C kernel code.
 ### Evidence
 ![alt text](image-15.png)
 
+## Step 8 - C kernel print function
+
+In this step, I created the `kernel.c` file inside the `src` folder.
+
+This file contains the C code that runs after the kernel enters 64-bit long mode. The assembly file `long_mode.asm` calls the function `kernel_main`, and this function starts the C part of the kernel.
+
+In `kernel.c`, I created simple functions to work with VGA text memory. The kernel writes directly to memory address `0xb8000`, which is used for text output in VGA mode.
+
+The function `clear` cleans the screen. The function `set_color` changes the text color. The function `print_str` prints a string on the screen.
+
+This step is important because it proves that the kernel reached 64-bit mode and executed C code correctly. The final result will show the group message in QEMU.
+
+### Evidence
+![alt text](image-16.png)
