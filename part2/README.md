@@ -9,7 +9,7 @@
 
 This folder contains the files for Part 2 of the integrative project.
 The objective is to build a minimal 64-bit kernel that boots in QEMU using GRUB and Multiboot2.
-## Step 0 - Repository setup
+
 ## Step 0 - Repository setup
 
 In this step, I prepared the project repository in my Ubuntu virtual machine.
@@ -22,3 +22,17 @@ This step is important because it connects my local Ubuntu environment with the 
 
 ### Evidence
 ![alt text](image-1.png)![alt text](image-2.png)
+
+## Step 1 - Local environment preparation
+
+## Step 1 - Local environment preparation
+
+In this step, I prepared my Ubuntu virtual machine for the kernel development process. I installed and verified the main tools needed for Part 2. These tools are Docker, QEMU, Make, and Tree.
+
+This step is important because the kernel needs a local Linux environment to build and test correctly. Docker will help me create a reproducible build environment. QEMU will help me boot and test the generated ISO file. Make will help me automate the compilation process.
+
+After the installation, I checked the versions of the tools in the terminal. The output confirms that my environment is ready to continue with the 64-bit kernel build.
+
+### Evidence
+![alt text](image-4.png)
+![alt text](image-3.png)
